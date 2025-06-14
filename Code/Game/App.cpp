@@ -101,6 +101,7 @@ void App::Startup()
 
 	DebugRenderConfig debugRenderConfig;
 	debugRenderConfig.m_renderer = g_renderer;
+	debugRenderConfig.m_startVisible = false;
 	debugRenderConfig.m_bitmapFontFilePathWithNoExtension = "Data/Images/SquirrelFixedFont";
 
 	OpenXRConfig openXRConfig;

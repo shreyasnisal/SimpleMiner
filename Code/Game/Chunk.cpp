@@ -572,6 +572,16 @@ void Chunk::AddVertsForBlock(int blockIndex)
 	bool addSkywardFace = skywardBlock && !skywardBlock->IsVisible();
 	bool addGroundwardFace = groundwardBlock && !groundwardBlock->IsVisible();
 
+	if (blockIter.GetBlock()->IsWater())
+	{
+		addSouthFace = true;
+		addNorthFace = true;
+		addEastFace = true;
+		addWestFace = true;
+		addSkywardFace = true;
+		addGroundwardFace = true;
+	}
+
 	blockCoords += IntVec3((int)m_worldPosition.x, (int)m_worldPosition.y, 0);
 	AABB2 const& topSpriteUVs = m_blocks[blockIndex].GetDefinition().m_topTextureUVs;
 	AABB2 const& sideSpriteUVs = m_blocks[blockIndex].GetDefinition().m_sideTextureUVs;

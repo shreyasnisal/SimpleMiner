@@ -187,9 +187,9 @@ Rgba8 BlockIter::GetFaceTintForLightInfluenceValues(Direction direction) const
 		}
 	}
 
-	unsigned char red = (unsigned char)RangeMapClamped((float)outdoorLightInfluence, 0.f, (float)OUTDOOR_LIGHTING_BITMASK, 0.f, (float)color.r);
-	unsigned char green = (unsigned char)RangeMapClamped((float)indoorLightInfluence, 0.f, (float)INDOOR_LIGHTING_BITMASK, 0.f, (float)color.g);
-	unsigned char blue = 0;
+	unsigned char red = GetBlock()->IsWater() ? 255 : (unsigned char)RangeMapClamped((float)outdoorLightInfluence, 0.f, (float)OUTDOOR_LIGHTING_BITMASK, 0.f, (float)color.r);
+	unsigned char green = GetBlock()->IsWater() ? 255 : (unsigned char)RangeMapClamped((float)indoorLightInfluence, 0.f, (float)INDOOR_LIGHTING_BITMASK, 0.f, (float)color.g);
+	unsigned char blue = GetBlock()->IsWater() ? 255 : 0;
 
 	return Rgba8(red, green, blue, 255);
 }
